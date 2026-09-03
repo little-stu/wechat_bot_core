@@ -1,0 +1,48 @@
+{
+  "bot": {
+    "name": "接单机器人",
+    "at_keywords": ["机器人", "@接单"],
+    "data_dir": "data"
+  },
+  "deepseek": {
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "api_key": "",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-chat",
+    "temperature": 0.1,
+    "timeout_sec": 60
+  },
+  "use_llm": true,
+  "worlds": {
+    "source": {
+      "groups": {
+        "wxg_a": { "name": "企微上家A群", "claim_mode": "group", "owner": "wxc_a", "owner_name": "A老板" },
+        "wxg_b": { "name": "企微上家B群", "claim_mode": "private", "owner": "wxc_b", "owner_name": "B老板" },
+        "wxg_w": { "name": "微信上家大群(人工抢单)", "claim_mode": "manual", "owner": "", "owner_name": "" }
+      }
+    },
+    "ops": {
+      "hall_group": { "id": "g_hall", "name": "抢单大厅" },
+      "designers": {
+        "d1": { "name": "设计师-小张" },
+        "d2": { "name": "设计师-小李" }
+      },
+      "dispatcher": { "id": "dispatcher", "name": "派单员-王姐" }
+    }
+  },
+  "claim": {
+    "timeout_sec": 90,
+    "queue_serialize": true,
+    "phrase_group": "扣1，接单：{type} {pages}页 金额{amount}元",
+    "phrase_private": "老板好，{type} {pages}页 金额{amount}元 这个单我来接，请确认给我",
+    "mode_override": ""
+  },
+  "order": {
+    "dedupe_minutes": 10,
+    "publish_to_hall": true
+  },
+  "logs": {
+    "echo_inbound": true,
+    "echo_outbound": true
+  }
+}
